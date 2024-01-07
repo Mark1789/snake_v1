@@ -3,7 +3,7 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background: black;
+  background: #331a00;
   color: white;
 }
 .out {
