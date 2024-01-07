@@ -12,7 +12,7 @@ let step = 10;
 let area = 290;
 let coordinates= [];
 let i = 1;
-let fail = "You fail"
+let fail = () => `You fail. Score: ${score.innerHTML}`;
 
 function moveBody (x) {
   setInterval(()=>{
@@ -24,7 +24,7 @@ function moveBody (x) {
 function coord () {
   let arr = coordinates.slice(0,i-1);
   if (arr.find((el) => snake.style.top === el[0] && snake.style.left === el[1])) {
-    alert(fail);
+    alert(fail());
     location.reload();
   }
   if (coordinates.size > 900) coordinates.pop();
@@ -46,6 +46,7 @@ let locLeftSnake = parseInt(snake.style.left)
      out.insertAdjacentHTML("afterbegin", `<div class='snakeBody' style='top:${coordinates[0][0]}; left:${coordinates[0][1]}' id='${'part'+i}'></div>`)
      moveBody(i)
      i += 1;
+     score.innerHTML = +score.innerHTML + 1;
      //speed -= 10;
   }
 }
@@ -63,7 +64,7 @@ function downStep() {
   }
   let timeDown = setInterval( () => {
     if (parseInt(snake.style.top) > area) {
-       alert(fail);
+       alert(fail());
        clearInterval(timeDown);
        location.reload();
     }
@@ -91,7 +92,7 @@ function topStep() {
   }
   let timeTop = setInterval( () => {
     if (parseInt(snake.style.top) < 0) {
-       alert(fail);
+       alert(fail());
        clearInterval(timeTop);
        location.reload();
     } 
@@ -120,7 +121,7 @@ function leftStep() {
   }
   let timeLeft = setInterval( () => {
     if (parseInt(snake.style.left) < 0) {
-      alert(fail);
+      alert(fail());
        clearInterval(timeLeft);
        location.reload();
     }
@@ -148,7 +149,7 @@ function rightStep() {
   }
     let timeRight = setInterval( () => {
       if (parseInt(snake.style.left) > area) {
-        alert(fail);
+        alert(fail());
        clearInterval(timeRight);
        location.reload();
       }
